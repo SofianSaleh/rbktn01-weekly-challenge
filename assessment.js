@@ -26,6 +26,7 @@ function daBears() {
                 var bed = "Just right!";
                 var feeling = "Whiny";
                 var sleepy = "Very yes";
+
             }
         }
     }
@@ -43,28 +44,29 @@ function daBears() {
 // Which function(s) access the "chair" variable and get "Too Big!"
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale1 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale1 = [ "papaBear", "mamaBear", "babyBear"];
 
 // Which function(s) access the "feeling" variable and get "Hungry"
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale2 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale2 = ["goldilocks"];
 
 // Which function(s) access the "porridge" variable and get "Too Cold!"
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale3 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale3 = ["mamaBear", "babyBear"];
 
 // Which function(s) access the "sleepy" variable and get undefined
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale4 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale4 = ["daBears", "papaBear", "mamaBear", "goldilocks"];
 
 // Which function(s) access the isFurry variable and get true
 // (Delete wrong answers, leave correct ones)
 
 var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 
+// you have to have return in the function otherwise it won't work//
 
 // *************
 // * PROBLEM 2 *
@@ -72,6 +74,7 @@ var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 
 // Write a constructor function called Vehicle.  Vehicle should have a property
 // called gasRemaining that is equal to 100.
+
 
 // Next, assign a function called drive to the Vehicle prototype.  When invoked,
 // drive should subtract 25 from the gasRemaining property of any Vehicle your constructor
@@ -83,9 +86,23 @@ var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 
 // CODE HERE...
 
+var Vehicale = function() {
+	this.gasRemaining = 100;
+}
 
+Vehicale.prototype.drive = function(){
+	this.gasRemaining -= 25;
+}
 
+var charger = new Vehicale
+var mustang = new Vehicale
 
+var mustang = function() {
+	Vehicale.call(this)
+	console.log(this)
+}
+mustang.prototype = Object.create(Vehicale.prototype)
+mustang.prototype.constructor = mustang
 
 // -----------------------------------------------------------------------------
 
