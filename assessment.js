@@ -96,14 +96,19 @@ Vehicale.prototype.drive = function(){
 
 var charger = new Vehicale
 var mustang = new Vehicale
-
+////////////////////////////////
 var mustang = function() {
 	Vehicale.call(this)
-	console.log(this)
 }
 mustang.prototype = Object.create(Vehicale.prototype)
 mustang.prototype.constructor = mustang
 
+
+var charger = function() {
+	Vehicale.call(this)
+}
+charger.prototype = Object.create(Vehicale.prototype)
+charger.prototype.constructor = charger
 // -----------------------------------------------------------------------------
 
 // *************
@@ -124,8 +129,25 @@ mustang.prototype.constructor = mustang
 
 
 
+
+
 // CODE HERE...
 
+var capitalized = function (string) {
+	var str = string.split("")
+	return str[0] + str.slice(1).join('').toLowerCase()
+}
+
+ 
+String.prototype.grammarPolice = (string) => {
+	var str = string.split(" ");
+	var sentence = ''
+	str.forEach(function(str1, i) {
+		sentence += capitalized(str1) + ' '
+	})
+	return sentence
+}
+.grammarPolice;
 
 
 // *************
@@ -143,6 +165,17 @@ mustang.prototype.constructor = mustang
 // In all other cases, return "Different values"
 
 // CODE HERE...
+
+var valueType = (one, two) => {
+console.log(typeof one)
+	if(typeof one === typeof two && one === two) {
+		return "Exactly the same"
+	}else if(typeof one !== typeof two && one === two) {
+		return "Same value, different types"
+	}else{
+		return "Different values"
+	}
+}
 
 // *************
 // * PROBLEM 5 *
@@ -165,10 +198,12 @@ var elephant = {
     name: 'Horton'
 }
 function large() {
-
-    return 'My name is ' + this.name + ' and I am very heavy!'
+console.log(elephant.name)
+    return 'My name is ' + this.name.bind(this) + ' and I am very heavy!'
 }
+
   // CODE HERE...
+
 
 // *************
 // * PROBLEM 6 *
@@ -195,3 +230,13 @@ function large() {
 // The closure function will return the combined value of assets and liabilities.
 
 // CODE HERE...
+
+var accountingOffice = function(assets)  {
+	console.log(assets)
+	return{
+	 liabilities : function(lia)  {
+			return assets + lia;
+		}
+	}	
+	//return liabilities(lia)
+} 
