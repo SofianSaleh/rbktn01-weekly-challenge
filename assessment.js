@@ -44,7 +44,7 @@ function daBears() {
 // Which function(s) access the "chair" variable and get "Too Big!"
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale1 = [ "papaBear", "mamaBear", "babyBear"];
+var fairyTale1 = [ "papaBear", "mamaBear"];
 
 // Which function(s) access the "feeling" variable and get "Hungry"
 // (Delete wrong answers, leave correct ones)
@@ -54,7 +54,7 @@ var fairyTale2 = ["goldilocks"];
 // Which function(s) access the "porridge" variable and get "Too Cold!"
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale3 = ["mamaBear", "babyBear"];
+var fairyTale3 = ["mamaBear"];
 
 // Which function(s) access the "sleepy" variable and get undefined
 // (Delete wrong answers, leave correct ones)
@@ -64,7 +64,7 @@ var fairyTale4 = ["daBears", "papaBear", "mamaBear", "goldilocks"];
 // Which function(s) access the isFurry variable and get true
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear"];
 
 // you have to have return in the function otherwise it won't work//
 
@@ -96,19 +96,13 @@ Vehicale.prototype.drive = function(){
 
 var charger = new Vehicale
 var mustang = new Vehicale
+mustang.drive();
+mustang.drive();
+charger.drive();
+
+
 ////////////////////////////////
-var mustang = function() {
-	Vehicale.call(this)
-}
-mustang.prototype = Object.create(Vehicale.prototype)
-mustang.prototype.constructor = mustang
 
-
-var charger = function() {
-	Vehicale.call(this)
-}
-charger.prototype = Object.create(Vehicale.prototype)
-charger.prototype.constructor = charger
 // -----------------------------------------------------------------------------
 
 // *************
@@ -133,21 +127,19 @@ charger.prototype.constructor = charger
 
 // CODE HERE...
 
-var capitalized = function (string) {
-	var str = string.split("")
-	return str[0] + str.slice(1).join('').toLowerCase()
-}
+
 
  
-String.prototype.grammarPolice = (string) => {
-	var str = string.split(" ");
-	var sentence = ''
-	str.forEach(function(str1, i) {
-		sentence += capitalized(str1) + ' '
-	})
-	return sentence
+String.prototype.grammarPolice = function() {
+	var str = this.split(" ");
+    for(var i = 0; i < str.length; i++) {
+        str[i] = str[i][0].toUpperCase() + str[i].slice(1).toLowerCase();
+    }
+	return str.join(' ')
 }
-.grammarPolice;
+
+
+
 
 
 // *************
@@ -198,10 +190,11 @@ var elephant = {
     name: 'Horton'
 }
 function large() {
-console.log(elephant.name)
-    return 'My name is ' + this.name.bind(this) + ' and I am very heavy!'
-}
+// console.log(elephant.name)
 
+    return 'My name is ' + this.name + ' and I am very heavy!'
+}
+var binding = large.bind(elephant);
   // CODE HERE...
 
 
@@ -216,6 +209,9 @@ console.log(elephant.name)
 // and return the bound function.
 
 // CODE HERE...
+var deathStar = (capacity, crew) => {
+    return capacity.bind(crew)
+}
 
 
 // *************
@@ -232,7 +228,7 @@ console.log(elephant.name)
 // CODE HERE...
 
 var accountingOffice = function(assets)  {
-	console.log(assets)
+
 	return{
 	 liabilities : function(lia)  {
 			return assets + lia;
